@@ -3,7 +3,7 @@
   background-color: #404747;
 }
 .main{
-  width: 28%;
+  width: fit-content;
   border-radius: 20px;
   /* background-color: #d3f3f5; */
   /* background-color: #3d4747; */
@@ -13,7 +13,7 @@
 .inputBar{
   width: 99%;
   border-radius: 10px;
-  height: 60px
+  height: 70px
 
 }
 h1{
@@ -36,6 +36,7 @@ h1{
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
+  width:100%;
   padding: 13px 29px 13px 29px;
   text-decoration: none;
 }
