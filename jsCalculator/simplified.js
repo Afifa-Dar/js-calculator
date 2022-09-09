@@ -53,12 +53,14 @@ const doCalc = (op1 , op2 , calc) => {
     else{                  //all goes fine
     operand1 = res ;      //set 1st operand to computed value
     operation = operatorTemp
-    operatorTemp = undefined
-    if (input.innerHTML.slice(-1) in operator)    //if another operator after result computed 
+    if (operatorTemp)    //if another operator after result computed 
     {
         res = res + input.innerHTML.slice(-1)   //show in inputBar
     }
+
     input.innerHTML = res      //show computed value to input bar
+
+    operatorTemp = undefined   //reset operatorTemp
     operand2 = undefined;     //reset 2nd operand
     temp = ""                 //reset temp , to re-get value for 2nd operand
     }
