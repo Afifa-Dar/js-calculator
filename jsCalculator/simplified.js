@@ -54,7 +54,7 @@ const doCalc = (op1 , op2 , calc) => {
     operand1 = res ;      //set 1st operand to computed value
     operation = operatorTemp
     operatorTemp = undefined
-    if (!Number(input.innerHTML.slice(-1)))     //if another operator after result computed 
+    if (input.innerHTML.slice(-1) in operator)    //if another operator after result computed 
     {
         res = res + input.innerHTML.slice(-1)   //show in inputBar
     }
