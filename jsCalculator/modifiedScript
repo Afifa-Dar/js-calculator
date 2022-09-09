@@ -1,0 +1,132 @@
+//define operators
+const operator = {
+    plus : (a , b) => a + b ,
+    sub : (a , b) => a - b ,
+    mul : (a , b) => a * b ,
+    mod : (a , b) => a % b ,
+    pow : (a , b) => a ** b ,
+    div : (a , b) =>{
+        if (b == 0){
+            return "Cant divide by zero"
+        }
+        else {
+            return a / b
+        }
+     }
+}
+
+const doCalc = (op1 , op2 , calc) => {
+    console.log("res")
+    let res = calc(op1 , op2)
+
+    if(res == "Cant divide by zero"){
+        operand1 = undefined;
+        operand2 = undefined ;
+        operation = undefined;
+        temp = ""
+        flag = 1
+        input.innerHTML=res
+    }
+    else{
+    operand1 = res ;
+    console.log(res)
+    operation = operatorTemp
+    operatorTemp = undefined
+    if (!Number(input.innerHTML.slice(-1)))
+        res = res + input.innerHTML.slice(-1)
+    input.innerHTML = res
+    operand2 = undefined;
+    temp = ""
+    }
+}
+
+var clear = document.getElementById("clear")
+var input = document.getElementById("input")
+var cut = document.getElementById("cancel")
+var equal = document.getElementById('equate')
+
+//adding functionality to AC button
+clear.addEventListener("click", () =>{ 
+    input.innerHTML = "";
+    operand1 = undefined;
+    operand2 = undefined ;
+    operation = undefined;
+    temp = ""
+})
+
+//adding funcitonality to cross button
+cut.addEventListener("click" ,() => {
+    input.innerHTML = input.innerHTML.slice(0,-1)
+    if(operand2 !== undefined){
+        console.log('op2')
+        operand2 = operand2.slice(0,-1)
+        temp = temp.slice(0,-1)
+        console.log(operand2)
+    }
+    else if(operation !== undefined){
+        console.log('op')
+        operationTemp = undefined;
+    }
+    else{
+        console.log('op1')
+
+        operand1 = operand1.slice(0,-1)
+    }
+
+})
+
+//adding functionality to equal-to
+equal.addEventListener("click",() => {
+    operand2 = temp;
+    doCalc(Number(operand1),Number(operand2),operator[operation])
+    operand1 = undefined;
+    operand2 = undefined ;
+    operation = undefined;
+    temp = ""
+    flag = 1
+
+})
+
+// get buttons
+var button = document.querySelectorAll('button')
+var flag
+var operand1; 
+var operand2;
+var  operation; 
+var temp ='' ;
+var operatorTemp;
+//when button click it add to inputBar
+button.forEach(btn => btn.addEventListener("click", () => {
+    if (btn.value in operator && operand1 !== undefined){
+        operand2 = temp;
+        operatorTemp = btn.value
+        console.log(operand2 + "operand2"+temp)
+    }
+    else if ((btn.value in operator) && (operand2 === undefined)){
+        console.log("operator found");
+        operand1 = input.innerHTML;
+        operation = btn.value
+        console.log(operand1)
+       // doCalc(operand1,operand2,operator[operation])
+
+    }
+    
+    if (btn.innerHTML !== clear.innerHTML && btn.innerHTML !== cut.innerHTML && btn.innerHTML !== equal.innerHTML)
+     {
+        if(flag == 1)  
+         {
+            input.innerHTML=btn.value
+            flag = 0
+         }
+        if (operand1 !== undefined && !(btn.value in operator)){
+            temp+=btn.innerText
+        }
+        input.innerHTML += btn.innerText
+    }  
+    if (operand1 !== undefined && operand2 !== undefined && operation !== undefined)
+    {
+        doCalc(Number(operand1),Number(operand2),operator[operation])
+
+    }
+}))
+

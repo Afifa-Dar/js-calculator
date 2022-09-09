@@ -61,10 +61,10 @@ while (expression)
         operand2+=i
        }
        console.log(operand2,operation)
-       doCalulation(Number(operand1) , Number(operand2),eval(operation))
-       
+       if(operation)
+       doCalulation(Number(operand1) , Number(operand2),eval(operation))   
    } 
 }
 
-var doCalulation = (op1 , op2 , calc) => result+= calc(op1,op2);
+var doCalulation = (op1 , op2 , calc) => result=calc(op1,op2);
 
