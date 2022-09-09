@@ -69,8 +69,14 @@ const buttonPressed = function(e)
     let btn = e.target
     // set 2nd operand value
     if (btn.value in operator && operand1 !== undefined){
+        if(temp == ''){     //if user overwrite operator 
+            operation = btn.value
+            input.innerHTML = input.innerHTML.slice(0,-1)
+        }
+        else{
         operand2 = temp;
         operatorTemp = btn.value
+        }
     }
     // set 1st operand value
     else if ((btn.value in operator) && (operand2 === undefined)){
@@ -126,7 +132,17 @@ clear.addEventListener("click", () =>{
 
 //adding funcitonality to cross button
 cut.addEventListener("click" ,() => {
-
+    input.innerHTML = input.innerHTML.slice(0,-1)
+    if(temp.length != 0){    //if user want to modified 2nd operand
+        console.log('op2')
+        temp = temp.slice(0,-1)
+        console.log(temp)
+    }
+    else if(operation !== undefined){   //if user want to modified operator
+        console.log('op')
+        operation = undefined;
+        operand1 = undefined;
+    }
 })
 
 //adding functionality to equal-to

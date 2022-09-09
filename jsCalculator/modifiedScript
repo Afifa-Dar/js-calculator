@@ -57,21 +57,17 @@ clear.addEventListener("click", () =>{
 //adding funcitonality to cross button
 cut.addEventListener("click" ,() => {
     input.innerHTML = input.innerHTML.slice(0,-1)
-    if(operand2 !== undefined){
+    if(temp.length != 0){
         console.log('op2')
-        operand2 = operand2.slice(0,-1)
         temp = temp.slice(0,-1)
-        console.log(operand2)
+        console.log(temp)
     }
     else if(operation !== undefined){
         console.log('op')
-        operationTemp = undefined;
+        operation = undefined;
+        operand1 = undefined;
     }
-    else{
-        console.log('op1')
-
-        operand1 = operand1.slice(0,-1)
-    }
+    
 
 })
 
@@ -98,9 +94,15 @@ var operatorTemp;
 //when button click it add to inputBar
 button.forEach(btn => btn.addEventListener("click", () => {
     if (btn.value in operator && operand1 !== undefined){
+        if(temp == ''){
+            operation = btn.value
+            input.innerHTML = input.innerHTML.slice(0,-1)
+        }
+        else{
         operand2 = temp;
         operatorTemp = btn.value
         console.log(operand2 + "operand2"+temp)
+        }
     }
     else if ((btn.value in operator) && (operand2 === undefined)){
         console.log("operator found");
