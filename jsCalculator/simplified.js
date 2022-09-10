@@ -36,6 +36,7 @@ var operatorTemp;
 
 const clearHistory = () =>{
     operand1 = undefined;
+    operatorTemp = undefined
     operand2 = undefined ;
     operation = undefined;
     temp = ""
@@ -152,7 +153,7 @@ equal.addEventListener("click",() => {
     operand2 = temp;
     doCalc(Number(operand1),Number(operand2),operator[operation])
     clearHistory();
-    flag = 1
+    if(!flag) flag = 1             //if no error
 
 })
 
