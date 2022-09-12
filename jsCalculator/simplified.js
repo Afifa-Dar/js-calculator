@@ -21,6 +21,9 @@ var input = document.getElementById("input")
 var cut = document.getElementById("cancel")
 var equal = document.getElementById('equate')
 
+//styling elements
+document.getElementById('clear').style.color = "#739394"
+
 
 //decalaration
 var flag
@@ -132,7 +135,6 @@ clear.addEventListener("click", () =>{
     clearHistory();
     flag = -1
 })
-
 //adding funcitonality to cross button
 cut.addEventListener("click" ,() => {
     input.innerHTML = input.innerHTML.slice(0,-1)
