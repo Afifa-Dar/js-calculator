@@ -1,11 +1,15 @@
 
-const yourName = prompt('enter your name!')
-const send = document.getElementById('a')
-const rec = document.getElementById('b')
-const chatbox = document.querySelector('.chatBox')
-const text = document.getElementById('text')
+$(document).ready(function(){
 
-import $ from "jquery";
+    alert('Im working');
+  
+  });
+const yourName = prompt('enter your name!');
+const send = document.getElementById('a');
+const rec = document.getElementById('b');
+const chatbox = document.querySelector('.chatBox');
+const text = document.getElementById('text');
+
 
 const chat = document.getElementById('chat')
 chat.addEventListener('submit' , e => {
@@ -59,5 +63,5 @@ function display()
         .then(() => setTimeout(display , 3000))
     
     }
-display()
+display();
 
