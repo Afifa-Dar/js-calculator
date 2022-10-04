@@ -1,0 +1,41 @@
+.sender ,.receiver{
+    width : max-content ; 
+    background-color:#5115e8;
+}
+
+
+.chatBox{
+    overflow: scroll;
+    height:60vh;
+}
+h1{
+    color:#5115e8;
+    font-family: 'Lobster',cursive;
+    font-size:large;
+}
+/* .btn {
+    background: #5115e8;
+    background-image: -webkit-linear-gradient(top, #5115e8, #7452cc);
+    background-image: -moz-linear-gradient(top, #5115e8, #7452cc);
+    background-image: -ms-linear-gradient(top, #5115e8, #7452cc);
+    background-image: -o-linear-gradient(top, #5115e8, #7452cc);
+    background-image: linear-gradient(to bottom, #5115e8, #7452cc);
+    -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+    border-radius: 12px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #7452cc;
+    background-image: -webkit-linear-gradient(top, #7452cc, #5115e8);
+    background-image: -moz-linear-gradient(top, #7452cc, #5115e8);
+    background-image: -ms-linear-gradient(top, #7452cc, #5115e8);
+    background-image: -o-linear-gradient(top, #7452cc, #5115e8);
+    background-image: linear-gradient(to bottom, #7452cc, #5115e8);
+    text-decoration: none;
+  } */
