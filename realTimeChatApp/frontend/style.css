@@ -1,6 +1,7 @@
 .sender ,.receiver{
-    width : max-content ; 
+    width : fit-content ; 
     background-color:#5115e8;
+    color: white;
 }
 
 
