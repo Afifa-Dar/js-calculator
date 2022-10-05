@@ -1,11 +1,15 @@
+// import { io } from "socket.io-client";
+
+ const socket = io('http://localhost:3000');
 
 // $(document).ready(function(){
 
-//     alert('Im working');
+// //     alert('Im working');
   
 //   });
 
 const yourName = prompt('enter your name!');
+//socket.emit('connection')
 const chatbox = document.querySelector('.chatBox');
 const text = document.getElementById('text');
 
@@ -26,8 +30,7 @@ chat.addEventListener('submit' , e => {
         }
     })
     .then( () =>console.log('welcom'))
-            // .then(response => response.json())
-            // .then(data  => msg.innerHTML += data)
+           
 
 })
 function display()
@@ -38,24 +41,17 @@ function display()
         .then(response => response.json())
         .then(data  => {
             for( i of data ){
-                // const container = document.createElement("div").classList.add("sender", "text-white", 'rounded-1', "p-1")
-                // const sender = document.createElement('span')
-                // const message = document.createElement('span')
-                const message = $(`<div></div>`).addClass("sender rounded-1 p-1 ")
+                 const message = $(`<div></div>`).addClass("sender rounded-1 p-1 ")
 
 
                 if(i.user == yourName) {
                         message.addClass("ms-auto ")
-                //     sender.appendChild(document.createTextNode('you: '))
-                //     message.appendChild(document.createTextNode(`${i.message}`))
                         message.append(`you:   ${i.msg}`)
                 }
                 else {
                     message.append(`${i.user}:   ${i.msg}`)
-                    // message.innerHTML+=i.msg
                 }
-                // container.appendChild(sender)
-                // container.appendChild(message)
+                
                  $(chatbox).append(message)
             }
         })

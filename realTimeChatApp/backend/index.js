@@ -2,10 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
-const $ = require('jquery')
+
 
 const app = express()
 
+var http = require('http').createServer(app)
+var io = require('socket.io')(5000)
+
+io.on('connection' , () => console.log("user connectd.."))
 const msgs = []
 
 const getMsgs = () => Array.from(msgs)
