@@ -7,7 +7,7 @@ const cors = require('cors')
 const app = express()
 
 var http = require('http').createServer(app)
-var io = require('socket.io')(5000)
+var io = require('socket.io')(http)
 
 io.on('connection' , () => console.log("user connectd.."))
 const msgs = []
@@ -15,7 +15,7 @@ const msgs = []
 const getMsgs = () => Array.from(msgs)
 
 app.use(express.json())
-app.use(express.static('../frontend'))
+app.use(express.static('frontend'))
 app.use(cors())
 
 app.get('/msg' , ( req  ,res ) => {
