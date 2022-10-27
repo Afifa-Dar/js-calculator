@@ -3,7 +3,7 @@ const app = express()
 
  app.use(express.static('public'))
 
-app.post('/res.html', (req ,res ) => {
+app.post('/', (req ,res ) => {
     console.log("post")
     res.send(req.body)
 })

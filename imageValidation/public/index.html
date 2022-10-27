@@ -7,12 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="res.html">
-        enter img<input type="file" id="img" name="img" accept="image/*">
-        enter title<input type="text" name="abc">
-        <button type="submit">submit</button>
+    <form method="post" action="">
+        <input type="file" accept="image/*" id ="img" capture />
+
+        <!-- <button type="submit">submit</button> -->
     </form>
-    
+    <script>
+        const img = document.getElementById('img');
+        img.addEventListener('change', (e) =>
+        {
+            fetch('index.html' , {
+    method: 'POST',
+    body : e.target.files[0] ,
+    headers: {
+      'Content-Type': 'application/json'
+    }})
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+          }
+);
+  </script>
 </body>
 
 </html>
