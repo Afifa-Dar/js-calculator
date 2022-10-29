@@ -3,9 +3,14 @@ const app = express()
 
  app.use(express.static('public'))
 
-app.post('/', (req ,res ) => {
+app.post('/img', (req ,res ) => {
     console.log("post")
-    res.send(req.body)
+    if(!req.files) {
+        console.log("req" , req.fils)
+        return res.status(400).send("No file found")
+    }
+    console.log(req.files)
+    res.end()
 })
 
 app.listen(3000 , () => console.log("listen"))

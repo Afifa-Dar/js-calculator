@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        fetch("http://localhost:5000/api/genere" ,{
+            method : "GET" , 
+            headers : {
+                "contenr-type" :"application/json"
+            },
+            mode: 'cors',
+        })
+        .then(res => console.log(res.json()))
+         .then(fetch("http://localhost:5000/api/genere" ,{
+            method : "POST" , 
+            body : JSON.stringify({"title":"guilt"}) ,
+            headers : {
+                "content-type" :"application/json" ,
+                "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVjMjUwODIxOWVmYWNkNzZlY2U3NzAiLCJpYXQiOjE2NjY5ODMxNzZ9.ya3zhQyPxmyKf2vofol7gpgBhIBvImiRmcJ9gLerfwQ"
+            },
+            mode: 'cors',
+        })
+        .then(res => console.log(res.json()))
+        .then(fetch("http://localhost:5000/api/genere/635c27994477090923cae6b6" ,{
+            method : "PUT" , 
+            body : JSON.stringify({"title":"feelings"}) ,
+            headers : {
+                "content-type" :"application/json" ,
+                "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzVjMjUwODIxOWVmYWNkNzZlY2U3NzAiLCJpYXQiOjE2NjY5ODMxNzZ9.ya3zhQyPxmyKf2vofol7gpgBhIBvImiRmcJ9gLerfwQ"
+            },
+            mode: 'cors',
+        }))
+        .then(res => console.log(res)))
+
+         .catch(err => console.log(err))
+    </script>
+</body>
+</html>

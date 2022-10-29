@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id = "res">call....</div>
+    <script>
+        console.log("hye")
+        // const req = $.ajax(
+        //     {
+        //     url :"http://localhost:5000/api/movie" ,
+        //     type : "GET",
+        //     dataType: "json" 
+        // })
+        // req.done(data => {
+        //         console.log(data)
+        //         $("#res").html(data[0].title);
+        //         console.log("kim")
+        //     })
+        // req.fail( () => console.log("fail"))
+        $.ajax(
+            {
+            url :"http://localhost:5000/api/movie" ,
+            type : "GET",
+            dataType: "json" ,
+            success : data => {
+                console.log(data)
+                $("#res").html(data[0].title);
+                console.log("kim")
+            } 
+        })
+        // $.ajax(
+        //     {
+        //     url :"http://localhost:5000/api/genere" ,
+        //     type : "POST",
+        //     data :  JSON.stringify({"title":"HelpMe"}),
+        //     dataType: "json" ,
+            
+        //     headers : {
+        //         "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQxNzM2N2Q0YTAyYWNlYzg1MDM1OGEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NjcwNTQ5Njl9.7CMco20a4Sy_bFENYTG7rh_gAxefzIR5xNdY8uU6-mU"
+        //     } ,
+        //     contentType: 'application/json; charset=utf-8',
+        //     success : data => {
+        //         console.log(data)
+        //         $("#res").html(data);
+        //         console.log("kim")
+        //     } 
+        // })
+        $.ajax(
+            {
+            url :"http://localhost:5000/api/genere/635d41a465d8cc43cafb3a39" ,
+            type : "PUT",
+            data :  JSON.stringify({"title":"Suspense"}),
+            dataType: "json" ,
+            
+            headers : {
+                "x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQxNzM2N2Q0YTAyYWNlYzg1MDM1OGEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NjcwNTQ5Njl9.7CMco20a4Sy_bFENYTG7rh_gAxefzIR5xNdY8uU6-mU"
+            } ,
+            contentType: 'application/json; charset=utf-8',
+            success : data => {
+                console.log("deleted..")
+            } 
+        })
+        
+        // req.done()
+        // req.fail( () => console.log("fail"))
+    </script>
+</body>
+</html>
