@@ -9,32 +9,30 @@
 </head>
 <body>
         <input type="file" accept="image/*" id ="img" capture />
-        <!-- <button type="submit">submit</button> -->
     <script>
         const img = document.getElementById('img');
         img.addEventListener('change', (e) =>
         {
             const file = $('#img')[0].files[0]
-            console.log(file)
-            const fd = new FormData($(this)[0])
-            //fd.append('img', file)
+            if (!file.type !== 'image/png') 
+                return console.log('Only image allowed')
 
-    //     fetch('/img' , {
-    //     method: 'POST',
-    //     body :  fd , 
-    //     Headers: {
-    //         "content-typ" : "file"
-    // }})
-    //             .then(res => console.log("done" , res))
-    //             .catch(err => console.log(err))
-          $.ajax({
-            url : "/img" ,
-            Type : "POST",
-           //dataType : "file" ,
-            data : fd ,
-            processData : false ,
-            success : res => console.log(res)
-          })
+            const fd = new FormData()
+            fd.append( 'img', file )
+        fetch('/img' , {
+        method: 'POST',
+        body :  fd , 
+        
+  })
+                .then(res => console.log("done" , res))
+                .catch(err => console.log(err))
+         // $.ajax({
+          //   url : "/img" ,
+          //   Type : "POST",
+          //   data : fd ,
+          //   processData : false ,
+          //   success : res => console.log(res)
+          // })
 });
   </script>
 </body>
