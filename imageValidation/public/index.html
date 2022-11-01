@@ -14,8 +14,8 @@
         img.addEventListener('change', (e) =>
         {
             const file = $('#img')[0].files[0]
-            if (!file.type !== 'image/png') 
-                return console.log('Only image allowed')
+            // if (!file.type !== 'image/png') 
+            //     return console.log('Only image allowed')
 
             const fd = new FormData()
             fd.append( 'img', file )
@@ -24,7 +24,12 @@
         body :  fd , 
         
   })
-                .then(res => console.log("done" , res))
+                .then(res => {
+                    console.log("done" , res) ;
+                    fetch('/img' , {
+                        method : 'GET'
+                    }).then(res => console.log("fetch image from database",res))
+                })
                 .catch(err => console.log(err))
          // $.ajax({
           //   url : "/img" ,
