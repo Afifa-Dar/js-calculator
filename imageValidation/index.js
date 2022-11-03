@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
+const {encode, decode} = require('node-base64-image');
 const mongoose = require('mongoose')
 const storage = multer.diskStorage({
     destination : (req, file, cb) => {
@@ -41,8 +42,17 @@ app.post('/img',upload.single('img')  , async (req ,res ,next) => {
         }
     })
     try{
+        function getBase64(file) {
+            return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader. readAsDataURL(file);
+            reader. onload = () => resolve(reader. result);
+            reader. onerror = error => reject(error);
+            });
+            }
         await image.save()
-        res.send(image)
+
+        res.send(getBase64(image))
     }
     catch(err){
         console.log(err)
@@ -55,6 +65,9 @@ app.post('/img',upload.single('img')  , async (req ,res ,next) => {
 app.get('/img', async (req, res) => {
     const image = await Image.find({});
     if(image.length == 0) return res.status(404).send("no images found...")
-    res.send(image)
+
+    res.render(await decode(image[0], {fname:image[0],ext: 'png' }))
+    //res.render('imagesPage', { image: image });
+    res.end()
 });
 app.listen(3000 , () => console.log("listen"))

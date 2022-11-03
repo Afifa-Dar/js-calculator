@@ -38,7 +38,16 @@
           //   processData : false ,
           //   success : res => console.log(res)
           // })
-});
+        
+          fetch('/img' , {
+                    method : 'GET'
+                    }).then(res => {
+                        console.log("fetch image from database",res)
+                        $('<img/>').attr({src:res})
+                    })
+                })
+                .catch(err => console.log(err))
+
   </script>
 </body>
 
